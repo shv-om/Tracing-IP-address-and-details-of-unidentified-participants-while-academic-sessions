@@ -13,6 +13,11 @@
   {% else %}
     <p>Welcome, new user. Please log in.</p>
   {% endif %}
+
+  <div>
+    <a href="{% url 'generate_id' %}">Generate Student Id</a>
+  </div>
+
 </div>
 
 {% endblock content %}

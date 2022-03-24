@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content" style="padding:3rem;">
+  
+    {% for sid, rusers in users_ids %}
+      <div>
+        {{ rusers }} {{ sid.random_id }}
+      </div>
+    {% empty %}
+      <div>
+        <p>No students</p>
+      </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}

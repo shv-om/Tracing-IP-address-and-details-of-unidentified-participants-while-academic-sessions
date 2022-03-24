@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db import transaction
 
 from . import models
@@ -9,7 +9,6 @@ class StudentSignupForm(UserCreationForm):
 
 	class Meta(UserCreationForm.Meta):
 		model = models.User
-
 
 	@transaction.atomic
 	def save(self):
