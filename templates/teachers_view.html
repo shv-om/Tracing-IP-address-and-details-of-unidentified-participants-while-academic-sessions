@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content" style="padding:3rem;">
+  {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+    <p>{{ teachers.subject }}</p>
+    <div>
+      <a href="{% url 'logout' %}">Logout</a>
+    </div>
+  {% else %}
+    <p>Welcome, new user. Please log in.</p>
+  {% endif %}
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}

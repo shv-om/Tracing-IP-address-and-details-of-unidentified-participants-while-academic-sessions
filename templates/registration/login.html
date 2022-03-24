@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+{% load static %}
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="button">Login</button>
+  </form>
+
+</body>
+</html>

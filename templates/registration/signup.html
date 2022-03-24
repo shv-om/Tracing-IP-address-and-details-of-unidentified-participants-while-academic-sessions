@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content">
+  <a class="btn btn-primary" href="{% url 'student_signup' %}">Student SignUp</a>
+  <a class="btn btn-primary" href="{% url 'teacher_signup' %}">Teacher Signup</a>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}

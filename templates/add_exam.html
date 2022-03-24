@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8 exam_info">
+        <div class="table-responsive-sm">
+          <table class="table table-hover">
+            <thead class="table-head-custom">
+              <tr>
+                <th scope="col">Exam Name</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Activation Date</th>
+                <th scope="col">Update Info</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for exam_name in exam_info_instance %}
+                <tr>
+                  <td scope="row" hidden>{{exam_name.pk}}</td>
+                  <td>{{exam_name.exam_name}}</td>
+                  <td>{{exam_name.exam_subject}}</td>
+                  <td>{{exam_name.activation_date}}</td>
+                  <td><a href="{% url 'update_exam_info_view' exam_id=exam_name.pk %}">Update Info</a></td>
+                  <td><a href="{% url 'edit_exam_view' exam_id=exam_name.pk exam_name=exam_name.exam_name %}">Edit</a></td>
+                  <td><a href="{% url 'delete_exam_view' exam_id=exam_name.pk exam_name=exam_name.exam_name %}">Delete</a></td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td>Sorry! No Data Found. Create New Exams...</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-4 right_pane_form">
+        <form method="POST">
+          {% csrf_token %}
+          {{ create_exam_form.as_p }}
+          <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}

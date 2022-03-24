@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Shiv Om</title>
+
+{% load static %}
+
+  <!-- AJ icon -->
+  <link rel="icon" href="img/aj-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <!-- My custom styles -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+  <link rel="stylesheet" href="{% static 'css/left_navigation.css' %}">
+
+  {% block style %}{% endblock style %}
+
+</head>
+
+<body>
+
+  <!-- Start your project here-->
+
+  <!--Navbar-->
+  <nav class="navigation" id="navigation">
+    {% block navigation %}
+    <span class="navigation-toggle" id="js-navigation-toggle">
+      <i class="fa fa-bars"></i>
+    </span>
+
+    <a href="#" class="navigation-logo" id="navigation-logo">Exam Now</a>
+
+    <ul class="main-navigation" id="navigation-menu">
+      <li>
+        <a class="navigation-links" href="{% url 'index' %}">Home</a>
+      </li>
+      <li>
+        <a class="navigation-links" href="#">About</a>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle navigation-links" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item dropdown-links" href="#">Custom Software</a>
+          <a class="dropdown-item dropdown-links" href="#">Web Development</a>
+          <a class="dropdown-item dropdown-links" href="#">Graphic Designing</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item dropdown-links" href="#">Based on your Needs</a>
+        </div>
+      </li>
+      <li>
+        <a class="navigation-links" href="#">Contact</a>
+      </li>
+      <li>
+        <a class="navigation-links" href="#">Work with Us</a>
+      </li>
+    </ul>
+    {% endblock navigation %}
+  </nav>
+  <!--/.Navbar-->
+
+  <!-- Main Body -->
+  <div class="page-wrapper container-fluid">
+    <div class="row">
+      {% block left_pane %}
+      {% endblock left_pane %}
+
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </div>
+  <!-- Main Body Ends -->
+
+  <!--Footer-->
+  <footer class="footer">
+    <!--Footer Links-->
+    {% block footer %}
+    {% endblock footer %}
+    <div class="footer-bottom">
+      &copy; Exam Hub | Developed & Designed by Shivom & Kunwar Asif
+    </div>
+  </footer>
+  <!--/.Footer-->
+
+  <!-- End your project here-->
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript" src="{% static 'js/myscript.js' %}"></script>
+  {% block javascript %}{% endblock javascript %}
+
+</body>
+
+</html>

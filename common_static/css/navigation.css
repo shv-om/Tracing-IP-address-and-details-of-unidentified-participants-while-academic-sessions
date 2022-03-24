@@ -1,0 +1,119 @@
+.navigation{
+	font-size: 18px;
+	color: rgba(255, 255, 255);
+	background-image: linear-gradient(260deg, rgb(5, 91, 59) 0%, rgb(0, 40, 25) 100%);
+	background-color: transparent;
+	padding: 10px 10px;
+	z-index: 99;
+	transition: 0.5s;
+	position: relative;
+	top: 0;
+	width: 100%;
+}
+
+.navigation-links,
+.navigation-logo{
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.7);
+	padding: 10px;
+}
+
+.main-navigation{
+	display: none;
+}
+
+.main-navigation li{
+	text-align: center;
+	margin: 15px auto;
+}
+
+.dropdown-links {
+	color: rgb(28, 54, 111);
+}
+
+.dropdown-links:hover {
+	background-color: rgb(28, 54, 111);
+	color: #fff;
+	transition: background-color 0.8s ease-in;
+	-webkit-transition: background-color 0.8s ease-in;
+	-moz-transition: background-color 0.8s ease-in;
+	-o-transition: background-color 0.8s ease-in;
+	-ms-transition: background-color 0.8s ease-in;
+}
+
+.navigation-logo{
+	display: inline-block;
+	font-size: 40px;
+	font-weight: bold;
+	letter-spacing: 0.3rem;
+	margin-left: 10px;
+	padding-bottom: 0.7rem;
+}
+
+.navigation-toggle{
+	position: absolute;
+	top: 45px;
+	right: 20px;
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 26px;
+}
+
+.toggle-active{
+	display: block;
+}
+
+.navigation-logo:hover{
+	text-decoration: none;
+	color: #fff;
+}
+
+.navigation-links:hover{
+	border-bottom: 2px solid white;
+	color: white;
+	border-color: red;
+	text-decoration: none;
+	transition: border-color 0.8s ease-in;
+	-webkit-transition: border-color 0.8s ease-in;
+	-moz-transition: border-color 0.8s ease-in;
+	-o-transition: border-color 0.8s ease-in;
+	-ms-transition: border-color 0.8s ease-in;
+}
+
+
+@media screen and (min-width: 976px) {
+	.navigation{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.main-navigation{
+		display: flex;
+		margin-right: 30px;
+		flex-direction: right;
+		justify-content: flex-end;
+	}
+
+	.main-navigation li{
+		margin: 0;
+	}
+
+	.navigation-links{
+		margin-left: 40px;
+	}
+
+	.navigation-logo{
+		margin-top: 0;
+		font-size: 40px;
+	}
+
+	.navigation-toggle{
+		display: none;
+	}
+
+	.navigation-logo:hover,
+	.navigation-links:hover {
+		color: rgba(255, 255, 255, 1);
+	}
+}

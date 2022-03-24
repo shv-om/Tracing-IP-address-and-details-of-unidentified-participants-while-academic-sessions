@@ -1,0 +1,127 @@
+/* Necessary for full page carousel*/
+html,
+body {
+  height: 100%;
+  background-color: white;
+}
+
+.page-wrapper{
+  min-height: 40%;
+}
+
+p {
+  font-size: 19px;
+  color: #636665;
+}
+
+table p {
+  padding: 0;
+}
+
+table thead{
+  background-image: linear-gradient(260deg, rgb(5, 91, 59) 0%, rgb(1, 60, 38) 50%);
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  border-bottom: 2px;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  border-top: 2px solid #fff;
+}
+
+.left-bar {
+  border-left: 4px solid white;
+}
+
+/* Content */
+
+.content {
+  padding: 1rem;
+  background-color: white;
+  min-width: 100%;
+}
+
+.question_answers_form {
+  background-color: rgb(0, 68, 42);
+  background-size: cover;
+  position: relative;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.question_answers_form p {
+  color: white;
+  font-weight: bolder;
+}
+
+.right_pane_form {
+  right:0;
+  position:relative;
+  padding: 1rem;
+}
+
+/* Content Ends */
+
+
+/* Footer */
+.footer {
+  background-color: darkgrey;
+  color: white;
+  height: 400px;
+  position: relative;
+}
+
+.footer .footer-bottom {
+  background-color: black;
+  color: lightgrey;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+
+/* Footer Ends*/
+
+
+.social-icons {
+  font-size: 24px;
+  color: white;
+  padding-left: 10px;
+}
+
+.social-icons:hover {
+  color: #08df98;
+  text-decoration: none;
+  transition: color 0.8s ease-in;
+}
+
+.social-list li{
+  display: inline;
+  padding-right: 20px;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .footer {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 586px) {
+
+}
