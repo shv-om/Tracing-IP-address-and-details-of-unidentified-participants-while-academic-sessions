@@ -140,7 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/"    # Redirect to home page if next param is not available in GET...
 LOGIN_URL = "registration/login"
-LOGOUT_REDIRECT_URL = "/registration/login"
+LOGOUT_REDIRECT_URL = "/registration/signup"
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

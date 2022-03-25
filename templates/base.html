@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Shiv Om</title>
+  <title>IPS</title>
 
 {% load static %}
 
@@ -15,10 +15,9 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
   <!-- My custom styles -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
-  <link rel="stylesheet" href="{% static 'css/left_navigation.css' %}">
 
   {% block style %}{% endblock style %}
 
@@ -35,7 +34,7 @@
       <i class="fa fa-bars"></i>
     </span>
 
-    <a href="#" class="navigation-logo" id="navigation-logo">Exam Now</a>
+    <a href="#" class="navigation-logo" id="navigation-logo">IPS</a>
 
     <ul class="main-navigation" id="navigation-menu">
       <li>
@@ -46,19 +45,16 @@
       </li>
       <li class="dropdown">
         <a class="dropdown-toggle navigation-links" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item dropdown-links" href="#">Custom Software</a>
-          <a class="dropdown-item dropdown-links" href="#">Web Development</a>
-          <a class="dropdown-item dropdown-links" href="#">Graphic Designing</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown-links" href="#">Based on your Needs</a>
-        </div>
-      </li>
-      <li>
-        <a class="navigation-links" href="#">Contact</a>
-      </li>
-      <li>
-        <a class="navigation-links" href="#">Work with Us</a>
+          <div class="dropdown-menu">
+            {% if user.is_authenticated %}
+              <p class="dropdown-item dropdown-links">{{ user }}</p>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item dropdown-links" href="/registration/logout/">Logout</a>
+            {% else %}
+              <a class="dropdown-item dropdown-links" href="/registration/signup/">Signup or Login</a>
+            {% endif %}            
+          </div>
+        
       </li>
     </ul>
     {% endblock navigation %}
@@ -83,7 +79,8 @@
     {% block footer %}
     {% endblock footer %}
     <div class="footer-bottom">
-      &copy; Exam Hub | Developed & Designed by Shivom & Kunwar Asif
+      &copy; IPS (Intruision Prevention System in Video Conferencing applications)
+      <p>Team: Sakinala, Ramza, SuDu, Aaqib, Parizat, Shivam</p>
     </div>
   </footer>
   <!--/.Footer-->
@@ -97,7 +94,7 @@
   <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- Your custom scripts (optional) -->
-  <script type="text/javascript" src="{% static 'js/myscript.js' %}"></script>
+  <script type="text/javascript"></script>
   {% block javascript %}{% endblock javascript %}
 
 </body>

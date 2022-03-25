@@ -4,8 +4,19 @@
 
 {% block content %}
 <div class="content">
-  <a class="btn btn-primary" href="{% url 'student_signup' %}">Student SignUp</a>
-  <a class="btn btn-primary" href="{% url 'teacher_signup' %}">Teacher Signup</a>
+  <div class="row justify-center" style="padding:10% 30%;">
+    <div class="col-sm-6" style="text-align: center;">
+      <a class="btn btn-primary" href="{% url 'student_signup' %}">Student SignUp</a>
+    </div>
+    <div class="col-sm-6" style="text-align: center;">
+      <a class="btn btn-primary" href="{% url 'teacher_signup' %}">Teacher Signup</a>
+    </div>
+  </div>
+  <div class="row justify-center">
+    <div class="col" style="text-align: center;">
+      <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </div>
+  </div>
 </div>
 {% endblock content %}
 

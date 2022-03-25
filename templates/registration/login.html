@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends 'base.html' %}
+
 {% load static %}
 
+{% block content %}
   <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" name="button">Login</button>
+    <div class="content" style="padding:3rem;">
+      {{ form.as_p }}
+      <button type="submit" name="button">Login</button>
+    </div>
   </form>
-
-</body>
-</html>
+{% endblock content %}

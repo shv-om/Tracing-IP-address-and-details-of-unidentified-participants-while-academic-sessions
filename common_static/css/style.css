@@ -46,40 +46,16 @@ hr {
   min-width: 100%;
 }
 
-.question_answers_form {
-  background-color: rgb(0, 68, 42);
-  background-size: cover;
-  position: relative;
-  padding: 1rem;
-  border-radius: 10px;
-}
-
-.question_answers_form p {
-  color: white;
-  font-weight: bolder;
-}
-
-.right_pane_form {
-  right:0;
-  position:relative;
-  padding: 1rem;
-}
 
 /* Content Ends */
 
 
 /* Footer */
-.footer {
-  background-color: darkgrey;
-  color: white;
-  height: 400px;
-  position: relative;
-}
 
 .footer .footer-bottom {
   background-color: black;
   color: lightgrey;
-  height: 50px;
+  height: 90px;
   width: 100%;
   position: absolute;
   bottom: 0px;
@@ -89,26 +65,7 @@ hr {
 }
 
 
-
 /* Footer Ends*/
-
-
-.social-icons {
-  font-size: 24px;
-  color: white;
-  padding-left: 10px;
-}
-
-.social-icons:hover {
-  color: #08df98;
-  text-decoration: none;
-  transition: color 0.8s ease-in;
-}
-
-.social-list li{
-  display: inline;
-  padding-right: 20px;
-}
 
 
 @media only screen and (max-width: 992px) {
