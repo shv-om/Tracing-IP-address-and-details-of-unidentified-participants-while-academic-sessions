@@ -5,18 +5,21 @@
 {% block content %}
 <div class="content" style="padding:3rem;">
   {% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-    <p>{{ teachers.subject }}</p>
-    <div>
-      <a href="{% url 'logout' %}">Logout</a>
+    <div style="margin: 1rem;">
+      <p>Welcome, {{ user.username }}.</p>
+      <p>Subject: {{ teachers.subject }}</p>
+    </div>
+    <div style="margin: 1rem;">
+      <a class="btn btn-primary" href="{% url 'generate_id' %}">Generate Student Id</a>
+    </div>
+    <div style="margin: 1rem;">
+      <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
     </div>
   {% else %}
-    <p>Welcome, new user. Please log in.</p>
+    <div>
+      <p>Welcome, new user. Please log in.</p>
+    </div>
   {% endif %}
-
-  <div>
-    <a href="{% url 'generate_id' %}">Generate Student Id</a>
-  </div>
 
 </div>
 

@@ -8,9 +8,19 @@ from . import models
 
 from ipsbase import views as baseviews
 
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required, user_passes_test
+from ipsbase.decorators import admin_teacher_required
+
+
+@login_required
+@admin_teacher_required
+# @user_passes_test(lambda u: u.is_superuser or u.is_teacher or u.is_staff)
 def SignupView(request):
 	return render(request, 'registration/signup.html', {})
 
+
+@method_decorator(admin_teacher_required, name='dispatch')
 class StudentSignupView(CreateView):
 	model = models.User
 	form_class = forms.StudentSignupForm
@@ -26,6 +36,7 @@ class StudentSignupView(CreateView):
 		return redirect(baseviews.student_view, user.id)
 
 
+@method_decorator(admin_teacher_required, name='dispatch')
 class TeacherSignupView(CreateView):
 	model = models.User
 	form_class = forms.TeacherSignupForm

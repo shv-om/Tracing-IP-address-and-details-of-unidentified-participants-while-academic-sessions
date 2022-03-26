@@ -34,7 +34,7 @@
       <i class="fa fa-bars"></i>
     </span>
 
-    <a href="#" class="navigation-logo" id="navigation-logo">IPS</a>
+    <a class="navigation-logo" href="{% url 'index' %}" id="navigation-logo">IPS</a>
 
     <ul class="main-navigation" id="navigation-menu">
       <li>
@@ -48,11 +48,20 @@
           <div class="dropdown-menu">
             {% if user.is_authenticated %}
               <p class="dropdown-item dropdown-links">{{ user }}</p>
+              {% if user.is_teacher %}
+                <div>
+                  <a class="dropdown-item dropdown-links" href="{% url 'teacher_view' user.pk %}">Teacher View</a>
+                </div>
+              {% elif user.is_student %}
+                <div>
+                  <a class="dropdown-item dropdown-links" href="{% url 'student_view' user.pk %}">Student View</a>
+                </div>
+              {% endif %}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item dropdown-links" href="/registration/logout/">Logout</a>
             {% else %}
               <a class="dropdown-item dropdown-links" href="/registration/signup/">Signup or Login</a>
-            {% endif %}            
+            {% endif %}
           </div>
         
       </li>
@@ -64,9 +73,6 @@
   <!-- Main Body -->
   <div class="page-wrapper container-fluid">
     <div class="row">
-      {% block left_pane %}
-      {% endblock left_pane %}
-
       {% block content %}
       {% endblock content %}
     </div>

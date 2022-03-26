@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-kqiwvo%d58(coqhwqxl-#+gy@gttb=z=eyb4j2a6bw!$h$$$&$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'registration.User'
 
@@ -139,8 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Login Details
 
 LOGIN_REDIRECT_URL = "/"    # Redirect to home page if next param is not available in GET...
-LOGIN_URL = "registration/login"
-LOGOUT_REDIRECT_URL = "/registration/signup"
+LOGIN_URL = "/registration/login/"
+LOGOUT_REDIRECT_URL = "/registration/signup/"
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

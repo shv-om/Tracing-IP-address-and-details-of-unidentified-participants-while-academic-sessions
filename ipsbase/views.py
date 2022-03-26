@@ -61,7 +61,12 @@ def generate_ids():
 @teacher_required
 def generate_id_view(request):
 
-	rusers = registered_models.User.objects.all()
+	rusers = registered_models.User.objects.filter(is_student=True)
+	sid = []
+
+	ip = get_ip(request)
+
+	print("IP:", ip)
 
 	for u in rusers:
 		if u.pk not in models.RandomID.objects.all().values_list('pk', flat=True):
@@ -73,7 +78,13 @@ def generate_id_view(request):
 			ids.random_id = generate_ids()
 			ids.save(update_fields=['random_id'])
 
-	sid = models.RandomID.objects.all()
+		# Saving Ip address
+		sip = models.IPaddress.objects.create(ran_id=ids, ipaddress=ip)
+		sip.save()
+
+		sid.append(ids)
+
+	# sid = models.RandomID.objects.filter(ruser_id=ruser.pk)
 
 	users_ids = zip(sid, rusers)
 
@@ -84,4 +95,14 @@ def generate_id_view(request):
 	return render(request, 'generate_id_view.html', context_processors)
 
 
+# @login_required
+# @teacher_required
+def get_ip(request):
+	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
 
+	if x_forwarded_for:
+		ip = x_forwarded_for.split(',')[0]
+	else:
+		ip = request.META.get('REMOTE_ADDR')
+
+	return ip

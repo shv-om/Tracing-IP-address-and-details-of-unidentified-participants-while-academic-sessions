@@ -3,18 +3,39 @@
 {% load static %}
 
 {% block content %}
-<div class="content" style="padding:3rem;">
-  
-    {% for sid, rusers in users_ids %}
-      <div>
-        {{ rusers }} {{ sid.random_id }}
+  <div class="content" style="padding:3rem;">
+    <div class="row justify-center">
+      <div class="col">
+        <h3 style="font-weight: bold; color: inherit;">
+          Newly generated Ids for uniquely identify the person joining the conference.
+        </h3>
       </div>
-    {% empty %}
-      <div>
-        <p>No students</p>
-      </div>
-    {% endfor %}
-</div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Generated Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sid, rusers in users_ids %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ rusers }}</td>
+            <td>{{ sid.random_id }}</td>
+          </tr>
+        {% empty %}
+          <div>
+            <p>No students</p>
+          </div>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    
+  </div>
 {% endblock content %}
 
 {% block footer %}
