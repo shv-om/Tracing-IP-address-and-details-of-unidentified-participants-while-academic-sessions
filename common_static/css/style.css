@@ -3,6 +3,7 @@ html,
 body {
   height: 100%;
   background-color: white;
+  position: relative;
 }
 
 .page-wrapper{
@@ -34,6 +35,10 @@ hr {
   border-top: 2px solid #fff;
 }
 
+.table-responsive {
+    max-height:350px;
+}
+
 .left-bar {
   border-left: 4px solid white;
 }
@@ -52,21 +57,20 @@ hr {
 
 /* Footer */
 
-.footer .footer-bottom {
+.footer{
   background-color: black;
   color: lightgrey;
   height: 90px;
   width: 100%;
-  position: absolute;
   bottom: 0px;
   left: 0px;
   text-align: center;
   padding-top: 20px;
+  position: absolute;
 }
 
 
 /* Footer Ends*/
-
 
 @media only screen and (max-width: 992px) {
   .footer {

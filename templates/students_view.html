@@ -5,11 +5,8 @@
 {% block content %}
 <div class="content" style="padding:3rem;">
   {% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-    <p>{{ students.grade }}</p>
-    <div>
-      <a href="{% url 'logout' %}">Logout</a>
-    </div>
+    <h4>Welcome, {{ user.username }}. Thanks for logging in.</h4>
+    <h5>Grade: {{ students.grade }}</h5>
   {% else %}
     <p>Welcome, new user. Please log in.</p>
   {% endif %}

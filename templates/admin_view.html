@@ -3,13 +3,16 @@
 {% load static %}
 
 {% block content %}
-  <div class="content" style="padding:2rem;">
+  <div class="content" style="padding:1rem;">
     <div class="row justify-center">
       <div class="col">
         <h3 style="font-weight: bold; color: inherit;">
-          Newly generated Ids for uniquely identify the person joining the conference.
+          Newly generated Users.
         </h3>
       </div>
+      <a href="{% url 'generate_id' %}" class="btn btn-primary" style="margin:1rem;">
+        Generate Ids
+      </a>
     </div>
     <div class="table-responsive">
       <table class="table table-hover">
@@ -17,18 +20,17 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Username</th>
-            <th scope="col">Generated Id</th>
+            <th scope="col">Unique Id</th>
             <th scope="col">IP address</th>
           </tr>
         </thead>
         <tbody>
-          {% for sid in users_ids %}
+          {% for auser in allusers %}
             <tr>
               <th scope="row">{{ forloop.counter }}</th>
-              <td>{{ sid.ruser }}</td>
-              <td>{{ sid.random_id }}</td>
-              <td>{{ sid.ipaddress }}</td>
-
+              <td>{{ auser.ruser }}</td>
+              <td>{{ auser.random_id }}</td>
+              <td>{{ auser.ipaddress }}</td>
             </tr>
           {% empty %}
             <div>
@@ -38,8 +40,6 @@
         </tbody>
       </table>
     </div>
-
-    
   </div>
 {% endblock content %}
 

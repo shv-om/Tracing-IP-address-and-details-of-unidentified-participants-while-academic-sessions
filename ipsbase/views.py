@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from . import models
 from . import forms
 
 from registration import models as registered_models
 
-from django.contrib.auth.decorators import login_required
-from .decorators import teacher_required, student_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .decorators import teacher_required, student_required, admin_teacher_required
 
 import random
 import string
@@ -58,35 +57,24 @@ def generate_ids():
 
 
 @login_required
-@teacher_required
+@admin_teacher_required
 def generate_id_view(request):
 
 	rusers = registered_models.User.objects.filter(is_student=True)
-	sid = []
 
-	ip = get_ip(request)
-
-	print("IP:", ip)
+	current_user = registered_models.IPadd_RanID.objects.update_or_create(ruser=request.user, defaults={'random_id': generate_ids()})
+	users_ids = [current_user[0]]
 
 	for u in rusers:
-		if u.pk not in models.RandomID.objects.all().values_list('pk', flat=True):
-			ids = models.RandomID.objects.create(ruser_id=u.pk, random_id=generate_ids())
-			ids.save()
 
-		else:
-			ids = models.RandomID.objects.get(ruser_id=u.pk)
-			ids.random_id = generate_ids()
-			ids.save(update_fields=['random_id'])
+		ids = registered_models.IPadd_RanID.objects.update_or_create(ruser=u, defaults={'random_id': generate_ids()})
 
-		# Saving Ip address
-		sip = models.IPaddress.objects.create(ran_id=ids, ipaddress=ip)
-		sip.save()
-
-		sid.append(ids)
+		users_ids.append(ids[0])
 
 	# sid = models.RandomID.objects.filter(ruser_id=ruser.pk)
+	# rusers.append(request.user)
 
-	users_ids = zip(sid, rusers)
+	# users_ids = zip(sid, rusers)
 
 	context_processors = {
 					'users_ids': users_ids,
@@ -95,14 +83,13 @@ def generate_id_view(request):
 	return render(request, 'generate_id_view.html', context_processors)
 
 
-# @login_required
-# @teacher_required
-def get_ip(request):
-	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+@login_required
+@user_passes_test(lambda u: u.is_superuser or u.is_staff)
+def admin_view(request):
+	allusers = registered_models.IPadd_RanID.objects.all()
 
-	if x_forwarded_for:
-		ip = x_forwarded_for.split(',')[0]
-	else:
-		ip = request.META.get('REMOTE_ADDR')
+	context_processors = {
+					'allusers': allusers,
+				}
 
-	return ip
+	return render(request, 'admin_view.html', context_processors)

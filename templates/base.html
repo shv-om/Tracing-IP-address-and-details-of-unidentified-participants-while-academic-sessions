@@ -52,9 +52,19 @@
                 <div>
                   <a class="dropdown-item dropdown-links" href="{% url 'teacher_view' user.pk %}">Teacher View</a>
                 </div>
+                <div>
+                  <a class="dropdown-item dropdown-links" href="{% url 'signup' %}">Create Users</a>
+                </div>
               {% elif user.is_student %}
                 <div>
                   <a class="dropdown-item dropdown-links" href="{% url 'student_view' user.pk %}">Student View</a>
+                </div>
+              {% elif user.is_superuser %}
+                <div>
+                  <a class="dropdown-item dropdown-links" href="{% url 'signup' %}">Create Users</a>
+                </div>
+                <div>
+                  <a class="dropdown-item dropdown-links" href="{% url 'administrator_view' %}">Show Users</a>
                 </div>
               {% endif %}
               <div class="dropdown-divider"></div>
